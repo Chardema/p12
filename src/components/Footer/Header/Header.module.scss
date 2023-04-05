@@ -1,0 +1,40 @@
+.main {
+  background: #334155;
+  padding: 12px 0;
+  .container {
+    max-width: 1240px;
+    padding: 0px 20px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .logo {
+      margin: 0 12px;
+      img {
+        width: 70px;
+        max-height: 70px;
+      }
+    }
+
+    .nav {
+      .list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        .link {
+          &:first-of-type {
+            margin-right: 8px;
+          }
+          a {
+            background: #fff;
+            color: #334155;
+            padding: 8px 12px;
+            border-radius: 4px;
+          }
+        }
+      }
+    }
+  }
+
+}
