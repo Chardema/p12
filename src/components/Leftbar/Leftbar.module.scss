@@ -1,0 +1,21 @@
+.sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 5rem;
+  background-color: black;
+
+  img {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .copy {
+    position: absolute;
+    bottom: 1rem;
+    left: 0.5rem;
+    color: white;
+    font-size: 0.75rem;
+  }
+}
