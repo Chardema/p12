@@ -9,6 +9,7 @@ header {
   width: 100%;
   height: 100px;
   background-color: $headerbackground;
+  box-shadow: $header-shadow;
   position: relative;
   .logo {
     z-index: 99;

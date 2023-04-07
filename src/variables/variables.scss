@@ -1,7 +1,11 @@
 // Déclaration de la variable
 $headerbackground: #020203;
+$leftbar-shadow: 2px 0px 5px rgba(0, 0, 0, 0.50);
+$header-shadow: 0px 2px 5px rgba(0, 0, 0, 0.50);
 
 // Export de la variable
 :export {
   headerbackground: $headerbackground;
+  leftbar-shadow: $leftbar-shadow;
+  header-shadow: $header-shadow;
 }

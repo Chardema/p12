@@ -1,5 +1,7 @@
 :export {
   headerbackground: #020203;
+  leftbar-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+  header-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .sidebar {
@@ -13,6 +15,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
 }
 .sidebar .square {
   height: 60px;
