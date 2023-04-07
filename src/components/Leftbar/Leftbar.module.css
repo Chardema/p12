@@ -5,11 +5,8 @@
 }
 
 .sidebar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 8rem;
+  height: 100vh;
+  width: 10%;
   background-color: #020203;
   display: flex;
   flex-direction: column;
@@ -18,8 +15,8 @@
   box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
 }
 .sidebar .square {
-  height: 60px;
-  width: 60px;
+  height: 70px;
+  width: 70px;
   border-radius: 10px;
   background-color: white;
   margin: 1rem 0;
@@ -29,8 +26,8 @@
   cursor: pointer;
 }
 .sidebar .square img {
-  height: 80%;
-  width: 80%;
+  height: 60%;
+  width: 60%;
 }
 .sidebar .copy {
   position: absolute;

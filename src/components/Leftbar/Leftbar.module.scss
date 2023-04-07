@@ -1,11 +1,8 @@
 @import "./../../variables/variables.scss";
 
 .sidebar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 8rem;
+  height: 100vh;
+  width: 10%;
   background-color: $headerbackground;
   display: flex;
   flex-direction: column;
@@ -14,8 +11,8 @@
   box-shadow: $leftbar-shadow;
 
   .square {
-    height: 60px;
-    width: 60px;
+    height: 70px;
+    width: 70px;
     border-radius: 10px;
     background-color: white;
     margin: 1rem 0;
@@ -24,8 +21,8 @@
     align-items: center;
     cursor: pointer;
     img {
-      height: 80%;
-      width: 80%;
+      height: 60%;
+      width: 60%;
     }
   }
 

@@ -8,17 +8,19 @@ import dumbbellIcon from './../../img/dumbbell-icon.svg'
 const Leftbar = () => {
     return (
         <div className={styles.sidebar}>
-            <div className={styles.square}>
-                <img src={yogaIcon} alt="Swimming icon" className={styles.icon} />
-            </div>
-            <div className={styles.square}>
-                <img src={swimmingIcon} alt="Swimming icon" className={styles.icon} />
-            </div>
-            <div className={styles.square}>
-                <img src={bikeIcon} alt="Swimming icon" className={styles.icon} />
-            </div>
-            <div className={styles.square}>
-                <img src={dumbbellIcon} alt="Swimming icon" className={styles.icon} />
+            <div className={styles.button}>
+                <div className={styles.square}>
+                    <img src={yogaIcon} alt="Swimming icon" className={styles.icon} />
+                </div>
+                <div className={styles.square}>
+                    <img src={swimmingIcon} alt="Swimming icon" className={styles.icon} />
+                </div>
+                <div className={styles.square}>
+                    <img src={bikeIcon} alt="Swimming icon" className={styles.icon} />
+                </div>
+                <div className={styles.square}>
+                    <img src={dumbbellIcon} alt="Swimming icon" className={styles.icon} />
+                </div>
             </div>
             <div className={styles.copy}>Copiryght, SportSee 2020</div>
         </div>
