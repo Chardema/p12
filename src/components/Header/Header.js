@@ -4,8 +4,9 @@ import styles from './Header.module.scss';
 const Navbar = () => {
     return (
         <header>
+            <div className={styles.logo}>SportSee</div>
             <nav className={styles.navbar}>
-                <div className={styles.logo}>Logo</div>
+
                 <ul className={styles.menu}>
                     <li><a href="src/components/Header#">Accueil</a></li>
                     <li><a href="src/components/Header#">Profil</a></li>
