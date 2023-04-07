@@ -1,3 +1,5 @@
+@import "./../../variables/variables.scss";
+
 header {
   display: flex;
   align-items: center;
@@ -6,19 +8,21 @@ header {
   left: 0;
   width: 100%;
   height: 100px;
-  background-color: black;
+  background-color: $headerbackground;
   position: relative;
   .logo {
-    font-size: 2rem;
     z-index: 99;
     margin-left: 1rem;
     color: red;
+    img {
+      height: 70px;
+      margin-top: 10px;
+    }
   }
   nav.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: black;
     color: white;
     padding: 1rem;
     width: 100%;

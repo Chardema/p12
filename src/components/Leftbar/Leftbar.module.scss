@@ -1,33 +1,43 @@
+@import "./../../variables/variables.scss";
+
 .sidebar {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 8rem;
-  background-color: black;
+  background-color: $headerbackground;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   .square {
-    width: 60px;
     height: 60px;
-    background-color: white;
+    width: 60px;
     border-radius: 10px;
-    margin: 10px 0;
+    background-color: white;
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      height: 80%;
+      width: 80%;
+    }
   }
+
 
   .copy {
     position: absolute;
     bottom: 1rem;
     left: 4rem;
     color: white;
-    font-size: 0.75rem;
+    font-size: 1rem;
     transform: rotate(270deg);
     transform-origin: bottom left;
     text-align: center;
-    width: 10rem;
+    width: 15rem;
     margin-left: 0.5rem;
   }
 }

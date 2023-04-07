@@ -1,10 +1,13 @@
 import React from 'react';
 import styles from './Header.module.scss';
+import logo from './../../img/sport-see-full-LOGO.png'
 
 const Navbar = () => {
     return (
         <header>
-            <div className={styles.logo}>SportSee</div>
+            <div className={styles.logo}>
+                <img src={logo} alt="Sport See" />
+            </div>
             <nav className={styles.navbar}>
 
                 <ul className={styles.menu}>
