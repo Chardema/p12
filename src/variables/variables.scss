@@ -1,0 +1,7 @@
+// Déclaration de la variable
+$headerbackground: #020203;
+
+// Export de la variable
+:export {
+  headerbackground: $headerbackground;
+}
