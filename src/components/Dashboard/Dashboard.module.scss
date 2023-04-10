@@ -7,29 +7,25 @@
   background-color: red;
   margin: 0;
   padding: 5%;
-
+  .container {
+    display: flex;
+    flex-direction: row;
+  }
   &__header {
     text-align: left;
     font-size: 1.5rem;
   }
 
   &__firstgraph {
-    margin-top: 5%;
     background-color: #FBFBFB;
     width: 70%;
+    margin-right: 20px;
 
     .graph__title {
-      diplay: inline-block;
       text-align: left;
-      padding: 20px;
-      display: flex;
       font-size: 15px;
       color: #20253A;
       font-weight: 500;
-    }
-    .recharts-legend-wrapper {
-      display: inline-block;
-      vertical-align: middle; /* pour aligner la légende verticalement */
     }
   }
 }

@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
 import styles from './Dashboard.module.scss';
+import NutritionData from "../NutritionData/NutritionData";
 import {USER_MAIN_DATA} from './../../api/data.js';
 import {USER_ACTIVITY} from './../../api/data.js';
+import {USER_AVERAGE_SESSIONS} from './../../api/data.js';
+import {USER_PERFORMANCE} from './../../api/data.js';
 import { BarChart,Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 
@@ -28,17 +31,35 @@ const Dashboard = () => {
             <h1>Bienvenue, {USER_MAIN_DATA[0].userInfos.firstName} !</h1>
             <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
             </div>
+            <div className={styles.container}>
             <div className={styles.dashboard__firstgraph}>
-                    <p className={styles.graph__title} style={{ margin: 0 }}>Activité quotidienne</p>
-                    <BarChart width={800} height={400} data={USER_ACTIVITY[1].sessions}>
+                    <BarChart width={800} height={300} data={USER_ACTIVITY[1].sessions}  margin={{
+                        top: 50,
+                        right: 30,
+                        left: 0,
+                        bottom: 0,
+                    }}>
+                        <text x={500 / 2} y={20} fill="black" textAnchor="middle" dominantBaseline="central">
+                            <tspan fontSize="14">Activité quotidienne </tspan>
+                        </text>
                         <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false}/>
                         <XAxis axisLine={false}/>
                         <YAxis  dataKey="kilogram"  orientation={"right"} domain={[60,"auto"]} axisLine={false}/>
                         <Tooltip />
-                        <Legend layout={"vertical"} align={"right"} />
+                        <Legend verticalAlign="top" iconType={"circle"}/>
                         <Bar dataKey="kilogram" fill="#282D30" radius={[3, 3, 0, 0]} barSize={10} />
                         <Bar dataKey="calories" fill="#E60000" radius={[3, 3, 0, 0]} barSize={10} />
                     </BarChart>
+            </div>
+                <div>
+                    <NutritionData icon="./../../src/img/calorie.svg" value={USER_MAIN_DATA[0].userInfos.firstName} unit="cal"
+                    />
+                    <NutritionData icon="/path/to/protein-icon.svg" value="100" unit="g"
+                    />
+                    <NutritionData icon="/path/to/carbs-icon.svg" value="100" unit="g" />
+
+                    <NutritionData icon="/path/to/fat-icon.svg" value="100" unit="g" />
+                </div>
             </div>
         </div>
     );
