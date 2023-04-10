@@ -1,8 +1,9 @@
 import React from 'react';
+import styles from './NutritionData.module.scss';
 
 function NutritionData(props) {
     return (
-        <div>
+        <div className={styles.data}>
       <span>
         <img src={props.icon} alt="icon" />
       </span>

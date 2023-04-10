@@ -3,6 +3,10 @@ import styles from './Dashboard.module.scss';
 import NutritionData from "../NutritionData/NutritionData";
 import {USER_MAIN_DATA} from './../../api/data.js';
 import {USER_ACTIVITY} from './../../api/data.js';
+import caloriesIcon from './../../img/calorie.svg';
+import carbohydrate from './../../img/carbohydrate.svg';
+import lipid from './../../img/lipid.svg';
+import protein from './../../img/protein.svg';
 import {USER_AVERAGE_SESSIONS} from './../../api/data.js';
 import {USER_PERFORMANCE} from './../../api/data.js';
 import { BarChart,Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
@@ -51,14 +55,14 @@ const Dashboard = () => {
                         <Bar dataKey="calories" fill="#E60000" radius={[3, 3, 0, 0]} barSize={10} />
                     </BarChart>
             </div>
-                <div>
-                    <NutritionData icon="./../../src/img/calorie.svg" value={USER_MAIN_DATA[0].userInfos.firstName} unit="cal"
+                <div className={styles.nutrition}>
+                    <NutritionData icon={caloriesIcon} value={USER_MAIN_DATA[0].userInfos.firstName} unit="cal"
                     />
-                    <NutritionData icon="/path/to/protein-icon.svg" value="100" unit="g"
+                    <NutritionData icon={carbohydrate} value="100" unit="g"
                     />
-                    <NutritionData icon="/path/to/carbs-icon.svg" value="100" unit="g" />
+                    <NutritionData icon={lipid} value="100" unit="g" />
 
-                    <NutritionData icon="/path/to/fat-icon.svg" value="100" unit="g" />
+                    <NutritionData icon={protein} value="100" unit="g" />
                 </div>
             </div>
         </div>
