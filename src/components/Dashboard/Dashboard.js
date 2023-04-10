@@ -9,9 +9,10 @@ const Dashboard = () => {
 
     return (
         <div className={styles.dashboard}>
+            <div className={styles.dashboard__header}>
             <h1>Bienvenue, {USER_MAIN_DATA[0].userInfos.firstName} !</h1>
             <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
-
+            </div>
         </div>
     );
 };
