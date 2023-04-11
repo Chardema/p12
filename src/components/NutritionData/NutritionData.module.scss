@@ -1,6 +1,19 @@
 .data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: white;
-  height: 20%;
+  height: 30%;
+  width: 50%;
   margin: 10px;
   border-radius: 10px;
+  .icon {
+    width: 30px;
+    margin-right: 10px;
+  }
+  .infos {
+    display: flex;
+    margin: 10px;
+    flex-direction: column;
+  }
 }

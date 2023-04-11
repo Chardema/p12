@@ -5,10 +5,12 @@ function NutritionData(props) {
     return (
         <div className={styles.data}>
       <span>
-        <img src={props.icon} alt="icon" />
+        <img  className={styles.icon} src={props.icon} alt="icon" />
       </span>
+            <div className={styles.infos}>
             <span>{props.value}</span>
             <span>{props.unit}</span>
+            </div>
         </div>
     );
 }

@@ -4,7 +4,6 @@
 .dashboard {
   width: 90%;
   height: 100%;
-  background-color: red;
   margin: 0;
   padding: 5%;
   .container {
@@ -19,7 +18,6 @@
   &__firstgraph {
     background-color: #FBFBFB;
     width: 70%;
-    margin-right: 20px;
 
     .graph__title {
       text-align: left;
@@ -30,5 +28,25 @@
   }
   .nutrition {
     width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__secondcontainer {
+    margin-top: 20px;
+    width: 70%;
+    .dashboard__allgraph {
+      width: 70%;
+      margin: 0 auto; /* Pour centrer le conteneur */
+      display: flex; /* Pour que les trois graphiques occupent la même taille */
+      justify-content: space-between; /* Pour ajouter de l'espace entre les graphiques */
+    }
+
+    .dashboard__secondgraph,
+    .dashboard__thirdgraph,
+    .dashboard__lastgraph {
+      flex: 1; /* Pour que les trois graphiques occupent la même taille */
+    }
   }
 }
