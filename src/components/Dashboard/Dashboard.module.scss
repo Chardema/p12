@@ -36,17 +36,7 @@
   &__secondcontainer {
     margin-top: 20px;
     width: 70%;
-    .dashboard__allgraph {
-      width: 70%;
-      margin: 0 auto; /* Pour centrer le conteneur */
-      display: flex; /* Pour que les trois graphiques occupent la même taille */
-      justify-content: space-between; /* Pour ajouter de l'espace entre les graphiques */
-    }
+    display: flex;
 
-    .dashboard__secondgraph,
-    .dashboard__thirdgraph,
-    .dashboard__lastgraph {
-      flex: 1; /* Pour que les trois graphiques occupent la même taille */
-    }
   }
 }

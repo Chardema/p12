@@ -7,15 +7,14 @@ import caloriesIcon from './../../img/calorie.svg';
 import carbohydrate from './../../img/carbohydrate.svg';
 import lipid from './../../img/lipid.svg';
 import protein from './../../img/protein.svg';
-import {USER_AVERAGE_SESSIONS} from './../../api/data.js';
-import {USER_PERFORMANCE} from './../../api/data.js';
-import { BarChart,Bar, LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import Simplebarcharts from "../Simplebarcharts/Simplebarcharts";
+import RadarChart from "./../../components/RadarChart/RadarChart.js";
+import LineCharts from "./../../components/LineChart/LineChart.js";
+import SinglePieCharts from "./../../components/PieChart/PieChart.js";
 
 
 
 const Dashboard = () => {
-    const [user, setUser] = useState({});
     console.log(USER_ACTIVITY[0].sessions); // Affiche les données de l'utilisateur
 
 
@@ -40,48 +39,10 @@ const Dashboard = () => {
                 </div>
             </div>
             <div className={styles.dashboard__secondcontainer}>
-                <div className={styles.dashboard__allgraph}>
-            <div className={styles.dashboard__secondgraph}>
-                <AreaChart>
-                    <text x={500 / 2} y={20} fill="black" textAnchor="middle" dominantBaseline="central">
-                        <tspan fontSize="14">Zone de l'area chart</tspan>
-                    </text>
-                    <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false}/>
-                    <XAxis axisLine={false}/>
-                    <YAxis dataKey="caloriesBurned" orientation={"right"} domain={[60,"auto"]} axisLine={false}/>
-                    <Tooltip />
-                    <Legend verticalAlign="top" iconType={"circle"}/>
-                    <Area dataKey="caloriesBurned" fill="#8884d8" stroke="#8884d8" />
-                </AreaChart>
-            </div>
-                <div className={styles.dashboard__thirdgraph}>
-                    <AreaChart>
-                        <text x={500 / 2} y={20} fill="black" textAnchor="middle" dominantBaseline="central">
-                            <tspan fontSize="14">Zone de l'area chart</tspan>
-                        </text>
-                        <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false}/>
-                        <XAxis axisLine={false}/>
-                        <YAxis dataKey="caloriesBurned" orientation={"right"} domain={[60,"auto"]} axisLine={false}/>
-                        <Tooltip />
-                        <Legend verticalAlign="top" iconType={"circle"}/>
-                        <Area dataKey="caloriesBurned" fill="#8884d8" stroke="#8884d8" />
-                    </AreaChart>
-                </div>
-                <div className={styles.dashboard__lastgraph}>
-                    <AreaChart
->
-                        <text x={500 / 2} y={20} fill="black" textAnchor="middle" dominantBaseline="central">
-                            <tspan fontSize="14">Zone de l'area chart</tspan>
-                        </text>
-                        <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false}/>
-                        <XAxis axisLine={false}/>
-                        <YAxis dataKey="caloriesBurned" orientation={"right"} domain={[60,"auto"]} axisLine={false}/>
-                        <Tooltip />
-                        <Legend verticalAlign="top" iconType={"circle"}/>
-                        <Area dataKey="caloriesBurned" fill="#8884d8" stroke="#8884d8" />
-                    </AreaChart>
-                </div>
-                </div>
+                <LineCharts />
+                <RadarChart />
+                <SinglePieCharts />
+
             </div>
         </div>
     );
