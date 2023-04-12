@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import {
     BarChart,
     Bar,
@@ -9,23 +10,57 @@ import {
     ResponsiveContainer,
     Tooltip,
 } from "recharts";
-import {USER_ACTIVITY, USER_MAIN_DATA} from './../../api/data.js';
+import {USER_ACTIVITY} from '../../api/data';
 import styles from "./Simplebarcharts.module.scss";
-
 
 const SimpleBarChart = () => {
 
+
+    const CustomLegend = ({ data }) => {
+        return (
+            <div className={styles.legend}>
+                {data.map((entry, index) => (
+                    <div
+                        key={`item-${index}`}
+                        className={`${styles.legendItem} ${
+                            entry.name === "Poids (kg)" ? styles.legendItemMargin : ""
+                        }`}
+                    >
+          <span
+              className={styles.legendIcon}
+              style={{ backgroundColor: entry.color }}
+          ></span>
+                        <span className={styles.legendText}>{entry.name}</span>
+                    </div>
+                ))}
+            </div>
+        );
+    };
+    const [legendData, setLegendData] = useState([]);
+
+    useEffect(() => {
+        setLegendData([
+            { name: "Poids (kg)", color: "#282D30" },
+            { name: "Calories brûlées (kCal)", color: "#E60000" },
+        ]);
+    }, []);
+
+    const ChartTitle = ({text}) => (
+        <div className={styles.CharTitle}>
+            <h2>{text}</h2>
+        </div>
+    );
     function CustomizedAxisTick(props) {
         const { x, y, payload } = props;
 
         return (
-            <text x={x} y={y} dy={16} textAnchor="middle" fill="#666">
+            <text x={x} y={y} dy={16} textAnchor="middle" fill="#666" >
                 {new Date(payload.value).getDate()}
             </text>
         );
     }
 
-    const CustomTooltip = ({ active, payload, label }) => {
+    const CustomTooltip = ({ active, payload }) => {
         if (active) {
             return (
                 <div className={styles.tooltip}>
@@ -38,27 +73,39 @@ const SimpleBarChart = () => {
         return null;
     };
 
+    // Trouver la valeur maximale des calories pour limiter l'axe des calories
+    const maxCalories = Math.max(...USER_ACTIVITY[0].sessions.map(session => session.calories));
 
     return (
-        <ResponsiveContainer width="100%" height={250}>
-            <BarChart
-                data={USER_ACTIVITY[0].sessions}
-                margin={{
-                    top: 5,
-                    right: 30,
-                    left: 20,
-                    bottom: 5,
-                }}
-            >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="day" tick={CustomizedAxisTick}/>
-                <YAxis dataKey="kilogram" orientation={"right"} domain={[60, "auto"]} axisLine={false} />
-                <Legend />
-                <Tooltip  content={CustomTooltip}/>
-                <Bar dataKey="kilogram" fill="#282D30" radius={[3, 3, 0, 0]} barSize={10} />
-                <Bar dataKey="calories" fill="#E60000" radius={[3, 3, 0, 0]} barSize={10} />
-            </BarChart>
-        </ResponsiveContainer>
+        <>
+            <div className={styles.chartContainer}>
+                <div className={styles.chartTitlelegend}>
+                    <ChartTitle text="Activité quotidienne" />
+                    <div className={styles.legenddata}>
+                        <CustomLegend data={legendData} />
+                    </div>
+                </div>
+                <ResponsiveContainer width="100%" height={350}>
+                    <BarChart
+                        data={USER_ACTIVITY[0].sessions}
+                        margin={{
+                            top: 50,
+                            left : 0,
+                            right: 30,
+                            bottom: 10,
+                        }}
+                    >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="day" tick={CustomizedAxisTick} interval={0}/>
+                        <YAxis yAxisId="left" dataKey="kilogram" orientation="right" domain={[60, 'auto']} axisLine={false} />
+                        <YAxis yAxisId="right" dataKey="calories" tick={false} domain={['auto', maxCalories]} axisLine={false} />
+                        <Tooltip content={CustomTooltip} />
+                        <Bar yAxisId="left" dataKey="kilogram" fill="#282D30" radius={[3, 3, 0, 0]} barSize={10} />
+                        <Bar yAxisId="right" dataKey="calories" fill="#E60000" radius={[3, 3, 0, 0]} barSize={10} />
+                    </BarChart>
+                </ResponsiveContainer>
+            </div>
+        </>
     );
 };
 

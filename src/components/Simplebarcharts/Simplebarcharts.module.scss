@@ -1,9 +1,43 @@
+.legendText {
+  font-size: 14px;
+  color: #000000;
+}
+.legendIcon {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+  border-radius: 50%;
+}
+.legendItemMargin {
+  margin-right: 30px;
+}
+
+.legend{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.chartContainer {
+  margin-left: 30px;
+  text-align: left;
+}
+
+.chartTitlelegend {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0px 60px;
+  font-size: 15px;
+}
+
 .tooltip {
   background-color: #E60000;
   border: none;
   display: flex;
   flex-direction: column;
   border-radius: 0px;
+
   p {
     color: white;
     font-size: 12px;

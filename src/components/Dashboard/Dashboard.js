@@ -14,8 +14,6 @@ import PieChartComponent from "./../../components/PieChart/PieChart.js";
 
 
 const Dashboard = () => {
-    console.log(USER_ACTIVITY[0].sessions); // Affiche les données de l'utilisateur
-
 
     return (
         <div className={styles.dashboard}>
