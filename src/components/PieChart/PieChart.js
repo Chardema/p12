@@ -1,30 +1,39 @@
-import React from 'react';
-import { Pie, Cell, Legend, ResponsiveContainer } from 'recharts';
-import styles from './PieChart.module.scss';
+import React from "react";
+import { PieChart, Pie, Legend, Tooltip, Cell } from "recharts";
+import styles from "./PieChart.module.scss";
 
+const data = [
+    { name: "Football", value: 400 },
+    { name: "Basketball", value: 300 },
+    { name: "Tennis", value: 200 },
+    { name: "Athlétisme", value: 100 },
+];
 
+const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
-const SinglePieCharts = () => {
-
-    const data = [
-        { name: 'Pop', value: 27 },
-        { name: 'Rock', value: 25 },
-        { name: 'Hip Hop', value: 20 },
-        { name: 'Rap', value: 18 },
-        { name: 'Autres', value: 10 },
-    ];
-
-    const COLORS = ['#6c5dd3', '#ffbb3b', '#ff7043', '#ff5252', '#ced4da'];
+const PieChartComponent = () => {
     return (
-        <div className={styles['pie-chart-container']}>
-            <div className={styles['chart-title']}>Répartition de vos playlists</div>
-            <div className={styles.chart}>
-
-            </div>
-        </div>
+        <PieChart width={400} height={400}>
+            <Pie
+                data={data}
+                cx={200}
+                cy={200}
+                labelLine={false}
+                outerRadius={80}
+                fill="#8884d8"
+                dataKey="value"
+            >
+                {data.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                ))}
+            </Pie>
+            <Tooltip />
+            <Legend />
+        </PieChart>
     );
-}
+};
 
-export default SinglePieCharts;
+export default PieChartComponent;
+
 
 

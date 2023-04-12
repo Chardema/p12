@@ -1,0 +1,12 @@
+.tooltip {
+  background-color: #E60000;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0px;
+  p {
+    color: white;
+    font-size: 12px;
+    padding: 5px;
+  }
+}
