@@ -1,0 +1,25 @@
+.chartContainer {
+  position: relative;
+  background-color: #FF0000;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.chartWrapper {
+  height: calc(100% - 40px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.chartTitle {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  opacity: 0.5;
+}
+
+
+

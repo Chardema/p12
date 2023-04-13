@@ -18,30 +18,32 @@ const Dashboard = () => {
     return (
         <div className={styles.dashboard}>
             <div className={styles.dashboard__header}>
-            <h1>Bienvenue, <span className={styles.titlered}>{USER_MAIN_DATA[0].userInfos.firstName}</span></h1>
-            <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+                <h1>Bienvenue, <span className={styles.titlered}>{USER_MAIN_DATA[0].userInfos.firstName}</span></h1>
+                <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
             </div>
             <div className={styles.container}>
-            <div className={styles.dashboard__firstgraph}>
-                <Simplebarcharts />
-            </div>
+                <div className={styles.graphsContainer}>
+                    <div className={styles.dashboard__firstgraph}>
+                        <Simplebarcharts />
+                    </div>
+                    <div className={styles.dashboard__secondcontainer}>
+                        <LineCharts />
+                        <RadarChart />
+                        <PieChartComponent />
+                    </div>
+                </div>
                 <div className={styles.nutrition}>
-                    <NutritionData icon={caloriesIcon} value={USER_MAIN_DATA[0].keyData.calorieCount} unit="cal"
-                    />
-                    <NutritionData icon={carbohydrate} value={USER_MAIN_DATA[0].keyData.proteinCount} unit="g"
-                    />
+                    <NutritionData icon={caloriesIcon} value={USER_MAIN_DATA[0].keyData.calorieCount} unit="cal" />
+                    <NutritionData icon={carbohydrate} value={USER_MAIN_DATA[0].keyData.proteinCount} unit="g" />
                     <NutritionData icon={lipid} value={USER_MAIN_DATA[0].keyData.carbohydrateCount} unit="g" />
-
                     <NutritionData icon={protein} value={USER_MAIN_DATA[0].keyData.lipidCount} unit="g" />
                 </div>
-            </div>
-            <div className={styles.dashboard__secondcontainer}>
-                <LineCharts />
-                <RadarChart />
-                <PieChartComponent />
             </div>
         </div>
     );
 }
 
 export default Dashboard;
+
+
+

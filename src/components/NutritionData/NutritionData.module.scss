@@ -2,19 +2,29 @@
   background-color: #FBFBFB!important;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   background-color: white;
-  height: 30%;
-  width: 50%;
-  margin: 10px;
+  height: 100%;
+  width: 70%;
+  margin: 25px;
   border-radius: 10px;
-  .icon {
-    width: 30px;
-    margin-right: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
+
+  .iconWrapper {
+    padding: 25px;
+    border-radius: 6px;
   }
+
+  .icon {
+    width: 40px;
+  }
+
   .infos {
     display: flex;
     margin: 10px;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-size: 20px;
+    font-weight: 600;
   }
 }
