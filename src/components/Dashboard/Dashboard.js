@@ -33,10 +33,10 @@ const Dashboard = () => {
                     </div>
                 </div>
                 <div className={styles.nutrition}>
-                    <NutritionData icon={caloriesIcon} value={USER_MAIN_DATA[0].keyData.calorieCount} unit="cal" />
-                    <NutritionData icon={carbohydrate} value={USER_MAIN_DATA[0].keyData.proteinCount} unit="g" />
-                    <NutritionData icon={lipid} value={USER_MAIN_DATA[0].keyData.carbohydrateCount} unit="g" />
-                    <NutritionData icon={protein} value={USER_MAIN_DATA[0].keyData.lipidCount} unit="g" />
+                    <NutritionData icon={caloriesIcon} value={USER_MAIN_DATA[0].keyData.calorieCount} unit="cal" info="Calories"/>
+                    <NutritionData icon={carbohydrate} value={USER_MAIN_DATA[0].keyData.proteinCount} unit="g" info="Protéines"/>
+                    <NutritionData icon={lipid} value={USER_MAIN_DATA[0].keyData.carbohydrateCount} unit="g" info="Glucides"/>
+                    <NutritionData icon={protein} value={USER_MAIN_DATA[0].keyData.lipidCount} unit="g"  info="Lipides"/>
                 </div>
             </div>
         </div>

@@ -29,15 +29,21 @@ function NutritionData(props) {
 
     return (
         <div className={styles.data}>
-      <span style={{ backgroundColor: bgColor }} className={styles.iconWrapper}>
-        <img ref={imgRef} className={styles.icon} src={props.icon} alt="icon" />
-      </span>
-            <div className={styles.infos}>
-                <span>{displayValue}</span>
-                <span>{displayUnit}</span>
+        <span style={{ backgroundColor: bgColor }} className={styles.iconWrapper}>
+            <img ref={imgRef} className={styles.icon} src={props.icon} alt="icon" />
+        </span>
+            <div className={styles.infosWrapper}>
+                <div className={styles.infos}>
+                    <span>{displayValue}</span>
+                    <span>{displayUnit}</span>
+                </div>
+                <div className={styles.infonutri}>
+                    <span>{props.info}</span>
+                </div>
             </div>
         </div>
     );
+
 }
 
 export default NutritionData;

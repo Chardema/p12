@@ -95,7 +95,7 @@ const SimpleBarChart = () => {
                             bottom: 10,
                         }}
                     >
-                        <CartesianGrid strokeDasharray="3 3" />
+                        <CartesianGrid strokeDasharray="3 3" vertical={false} horizontal={true} />
                         <XAxis dataKey="day" tick={CustomizedAxisTick} interval={0}/>
                         <YAxis yAxisId="left" dataKey="kilogram" orientation="right" domain={[60, 'auto']} axisLine={false} />
                         <YAxis yAxisId="right" dataKey="calories" tick={false} domain={['auto', maxCalories]} axisLine={false} />

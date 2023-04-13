@@ -1,39 +1,34 @@
 import React from "react";
-import { PieChart, Pie, Legend, Tooltip, Cell } from "recharts";
 import styles from "./PieChart.module.scss";
+import { RadialBarChart, RadialBar, Legend, ResponsiveContainer } from 'recharts';
 
 const data = [
-    { name: "Football", value: 400 },
-    { name: "Basketball", value: 300 },
-    { name: "Tennis", value: 200 },
-    { name: "Athlétisme", value: 100 },
+    { name: 'Score moyen', value: 80, fill: '#8884d8' },
 ];
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
-
-const PieChartComponent = () => {
+const renderCustomizedLabel = () => {
     return (
-        <PieChart width={400} height={400}>
-            <Pie
-                data={data}
-                cx={200}
-                cy={200}
-                labelLine={false}
-                outerRadius={80}
-                fill="#8884d8"
-                dataKey="value"
-            >
-                {data.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                ))}
-            </Pie>
-            <Tooltip />
-            <Legend />
-        </PieChart>
+        <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" fontSize={28}>
+            Mon titre
+        </text>
     );
 };
 
-export default PieChartComponent;
+const RadialBarCharts = () => (
+    <div className={styles.PieContainer}>
+    <ResponsiveContainer width="100%" height={400}>
+        <RadialBarChart cx="50%" cy="50%" innerRadius="40%" outerRadius="80%" barSize={20} data={data} background={renderCustomizedLabel()}>
+            <RadialBar minAngle={15} background clockWise={true} dataKey="value" />
+            <Legend iconSize={10} width={120} height={140} layout="vertical" verticalAlign="middle" align="right" />
+        </RadialBarChart>
+    </ResponsiveContainer>
+    </div>
+);
+
+export default RadialBarCharts;
+
+
+
 
 
 
