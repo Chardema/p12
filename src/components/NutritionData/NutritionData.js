@@ -23,14 +23,18 @@ function NutritionData(props) {
         extractColor();
     }, [props.icon, colorThief]);
 
+    // Convertir les calories en kilocalories si l'unité est "cal"
+    const displayValue = props.unit === "cal" ? (props.value / 1000).toFixed(3) : props.value;
+    const displayUnit = props.unit === "cal" ? "kcal" : props.unit;
+
     return (
         <div className={styles.data}>
       <span style={{ backgroundColor: bgColor }} className={styles.iconWrapper}>
         <img ref={imgRef} className={styles.icon} src={props.icon} alt="icon" />
       </span>
             <div className={styles.infos}>
-                <span className={styles.value}>{props.value}</span>
-                <span className={styles.unit}>{props.unit}</span>
+                <span>{displayValue}</span>
+                <span>{displayUnit}</span>
             </div>
         </div>
     );
