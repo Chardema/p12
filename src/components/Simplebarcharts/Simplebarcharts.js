@@ -6,12 +6,12 @@ import {
     XAxis,
     YAxis,
     CartesianGrid,
-    Legend,
     ResponsiveContainer,
     Tooltip,
 } from "recharts";
 import {USER_ACTIVITY} from '../../api/data';
 import styles from "./Simplebarcharts.module.scss";
+import Models from "../../api/Model";
 
 const SimpleBarChart = () => {
 
@@ -75,6 +75,8 @@ const SimpleBarChart = () => {
 
     // Trouver la valeur maximale des calories pour limiter l'axe des calories
     const maxCalories = Math.max(...USER_ACTIVITY[0].sessions.map(session => session.calories));
+    let activitymodel = new Models();
+    const testdatacharts = activitymodel.FormatActivity(USER_ACTIVITY[0]);
 
     return (
         <>
@@ -87,7 +89,7 @@ const SimpleBarChart = () => {
                 </div>
                 <ResponsiveContainer width="100%" height={350}>
                     <BarChart
-                        data={USER_ACTIVITY[0].sessions}
+                        data={testdatacharts}
                         margin={{
                             top: 50,
                             left : 0,
@@ -97,11 +99,11 @@ const SimpleBarChart = () => {
                     >
                         <CartesianGrid strokeDasharray="3 3" vertical={false} horizontal={true} />
                         <XAxis dataKey="day" tick={CustomizedAxisTick} interval={0}/>
-                        <YAxis yAxisId="left" dataKey="kilogram" orientation="right" domain={[60, 'auto']} axisLine={false} />
-                        <YAxis yAxisId="right" dataKey="calories" tick={false} domain={['auto', maxCalories]} axisLine={false} />
+                        <YAxis yAxisId="left" dataKey="actualkilogram" orientation="right" domain={[60, 'auto']} axisLine={false} />
+                        <YAxis yAxisId="right" dataKey="lostcalories" tick={false} domain={['auto', maxCalories]} axisLine={false} />
                         <Tooltip content={CustomTooltip} />
-                        <Bar yAxisId="left" dataKey="kilogram" fill="#282D30" radius={[3, 3, 0, 0]} barSize={10} />
-                        <Bar yAxisId="right" dataKey="calories" fill="#E60000" radius={[3, 3, 0, 0]} barSize={10} />
+                        <Bar yAxisId="left" dataKey="actualkilogram" fill="#282D30" radius={[3, 3, 0, 0]} barSize={10} />
+                        <Bar yAxisId="right" dataKey="lostcalories" fill="#E60000" radius={[3, 3, 0, 0]} barSize={10} />
                     </BarChart>
                 </ResponsiveContainer>
             </div>
