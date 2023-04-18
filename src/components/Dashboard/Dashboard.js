@@ -9,15 +9,27 @@ import Simplebarcharts from "../Simplebarcharts/Simplebarcharts";
 import RadarChart from "./../../components/RadarChart/RadarChart.js";
 import LineCharts from "./../../components/LineChart/LineChart.js";
 import RadialBarCharts from "../PieChart/RadialBarCharts.js";
+import {useParams} from "react-router-dom";
+import {useEffect, useState} from "react";
+import getMockData from "../../api/datacall";
 
 
 
 const Dashboard = () => {
+    const [user, setUser] = useState({});
+    const {id} =  useParams();
+    console.log(id);
+    useEffect(() => {
+        getMockData(id).then(data => {
+            setUser(data.userInfos);
+        });
+
+    },[id])
 
     return (
         <div className={styles.dashboard}>
             <div className={styles.dashboard__header}>
-                <h1 className={styles.dashboard__headertitle}>Bienvenue, <span className={styles.titlered}>{USER_MAIN_DATA[0].userInfos.firstName}</span></h1>
+                <h1 className={styles.dashboard__headertitle}>Bienvenue, <span className={styles.titlered}>{user.firstName}</span></h1>
                 <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
             </div>
             <div className={styles.container}>
