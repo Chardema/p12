@@ -1,6 +1,7 @@
 @import "./../../variables/variables.scss";
 
 .sidebar {
+  height: 100vh;
   width: 10%;
   background-color: $headerbackground;
   display: flex;
@@ -8,6 +9,7 @@
   justify-content: center;
   align-items: center;
   box-shadow: $leftbar-shadow;
+  position: relative;
 
   .square {
     height: 70px;
@@ -29,10 +31,10 @@
   .copy {
     position: absolute;
     bottom: 1rem;
-    left: 4rem;
+    left: 50%;
     color: white;
     font-size: 1rem;
-    transform: rotate(270deg);
+    transform: rotate(270deg) translateX(50%);
     transform-origin: bottom left;
     text-align: center;
     width: 15rem;

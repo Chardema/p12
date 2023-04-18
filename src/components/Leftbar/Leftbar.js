@@ -1,9 +1,16 @@
+/**
+ * Leftbar component that renders a vertical navigation bar with sports icons.
+ *
+ * @component
+ */
+
 import React from 'react';
 import styles from './Leftbar.module.scss';
 import swimmingIcon from './../../img/swimming-icon.svg'
 import yogaIcon from './../../img/yoga-icon.svg'
 import bikeIcon from './../../img/bike-icon.svg'
 import dumbbellIcon from './../../img/dumbbell-icon.svg'
+
 
 const Leftbar = () => {
     return (
