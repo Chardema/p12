@@ -9,13 +9,10 @@ import {
     ResponsiveContainer,
     Tooltip,
 } from "recharts";
-import {USER_ACTIVITY} from '../../api/data';
 import styles from "./Simplebarcharts.module.scss";
 import Models from "../../api/Model";
 
-const SimpleBarChart = () => {
-
-
+const SimpleBarChart = ({userActivity}) => {
     const CustomLegend = ({ data }) => {
         return (
             <div className={styles.legend}>
@@ -60,6 +57,7 @@ const SimpleBarChart = () => {
         );
     }
 
+
     const CustomTooltip = ({ active, payload }) => {
         if (active) {
             return (
@@ -72,11 +70,16 @@ const SimpleBarChart = () => {
 
         return null;
     };
+    // on vérifie que les données sont chargées
+    if (!userActivity || userActivity.length === 0) {
+        return <div>Loading...</div>;
+    }
 
     // Trouver la valeur maximale des calories pour limiter l'axe des calories
-    const maxCalories = Math.max(...USER_ACTIVITY[0].sessions.map(session => session.calories));
+    const maxCalories = Math.max(...userActivity.map(session => session.calories));
     let activitymodel = new Models();
-    const testdatacharts = activitymodel.FormatActivity(USER_ACTIVITY[0]);
+    const testdatacharts = activitymodel.FormatActivity(userActivity);
+
 
     return (
         <>

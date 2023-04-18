@@ -1,6 +1,5 @@
 import styles from './Dashboard.module.scss';
 import NutritionData from "../NutritionData/NutritionData";
-import {USER_MAIN_DATA} from './../../api/data.js';
 import caloriesIcon from './../../img/calorie.svg';
 import carbohydrate from './../../img/carbohydrate.svg';
 import lipid from './../../img/lipid.svg';
@@ -16,43 +15,59 @@ import getMockData from "../../api/datacall";
 
 
 const Dashboard = () => {
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState(null);
+    const [userActivity, setUserActivity] = useState([]);
     const {id} =  useParams();
-    console.log(id);
-    useEffect(() => {
-        getMockData(id).then(data => {
-            setUser(data.userInfos);
-        });
 
-    },[id])
+    useEffect(() => {
+        getMockData(id).then(({ userData, userActivity }) => {
+            setUser(userData);
+            setUserActivity(userActivity.sessions);
+        });
+    }, [id]);
+//permet de prendre en compte les deux élèments score et todayScore
+    const getUserScore = (user) => {
+        if (user.todayScore !== undefined) {
+            return user.todayScore;
+        } else if (user.score !== undefined) {
+            return user.score;
+        } else {
+            return undefined;
+        }
+    };
+    //rassemble en une seule const les deux élèments pour affichage dans la RadialbarChart
+    const userScore = user && getUserScore(user);
+
 
     return (
         <div className={styles.dashboard}>
             <div className={styles.dashboard__header}>
-                <h1 className={styles.dashboard__headertitle}>Bienvenue, <span className={styles.titlered}>{user.firstName}</span></h1>
+                <h1 className={styles.dashboard__headertitle}>Bienvenue,{" "}<span className={styles.titlered}>{user && user.userInfos && user.userInfos.firstName}</span></h1>
                 <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
             </div>
             <div className={styles.container}>
                 <div className={styles.graphsContainer}>
                     <div className={styles.dashboard__firstgraph}>
-                        <Simplebarcharts />
+                        <Simplebarcharts userActivity={userActivity} />
+
                     </div>
                     <div className={styles.dashboard__secondcontainer}>
                         <LineCharts />
                         <RadarChart />
-                        <RadialBarCharts />
+                        {userScore !== undefined ? <RadialBarCharts userScore={userScore} key={id} /> : <div>Loading...</div>}
                     </div>
                 </div>
                 <div className={styles.nutrition}>
-                    <NutritionData icon={caloriesIcon} value={USER_MAIN_DATA[0].keyData.calorieCount} unit="cal" info="Calories"/>
-                    <NutritionData icon={carbohydrate} value={USER_MAIN_DATA[0].keyData.proteinCount} unit="g" info="Protéines"/>
-                    <NutritionData icon={lipid} value={USER_MAIN_DATA[0].keyData.carbohydrateCount} unit="g" info="Glucides"/>
-                    <NutritionData icon={protein} value={USER_MAIN_DATA[0].keyData.lipidCount} unit="g"  info="Lipides"/>
+                    <NutritionData icon={caloriesIcon} value={user && user.keyData && user.keyData.calorieCount} unit="cal" info="Calories"/>
+                    <NutritionData icon={carbohydrate} value={user && user.keyData && user.keyData.proteinCount} unit="g" info="Protéines"/>
+                    <NutritionData icon={lipid} value={user && user.keyData && user.keyData.carbohydrateCount} unit="g" info="Glucides"/>
+                    <NutritionData icon={protein} value={user && user.keyData && user.keyData.lipidCount} unit="g"  info="Lipides"/>
                 </div>
             </div>
         </div>
     );
 }
+
 
 export default Dashboard;
 

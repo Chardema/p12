@@ -1,6 +1,6 @@
 export default class Models {
-    FormatActivity(data){
-        return data.sessions.map((item, index) => {
+    FormatActivity(sessions){
+        return sessions.map((item, index) => {
             return {
                 day: index + 1,
                 date : item.day,
@@ -10,4 +10,5 @@ export default class Models {
         })
     }
 }
+
 

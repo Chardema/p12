@@ -4,15 +4,14 @@ import {
     RadialBarChart,
     RadialBar,
     ResponsiveContainer,
-    PolarGrid,
     PolarAngleAxis
 } from "recharts";
 
-const data = [{ pct: 40 }];
-
-const RadialBarCharts = () => {
-    const total = 100;
-    const percentage = Math.round((data[0].pct / total) * 100);
+const RadialBarCharts = ({userScore}) => {
+    // Multiplier par 100 pour convertir la valeur décimale en pourcentage
+    const userScorePercentage = userScore * 100;
+    const percentage = Math.round(userScorePercentage);
+    const radialChartData = [{ pct: percentage }];
     return (
         <div className={styles.PieContainer}>
             <p>Score</p>
@@ -20,7 +19,7 @@ const RadialBarCharts = () => {
                 <RadialBarChart
                     width={200}
                     height={200}
-                    data={data}
+                    data={radialChartData}
                     innerRadius="80%"
                     outerRadius="80%"
                     barSize={10}
@@ -38,7 +37,7 @@ const RadialBarCharts = () => {
                         background
                         dataKey="pct"
                         angleAxisId={0}
-                        data={data}
+                        data={radialChartData}
                         fill="#FF0000"
                     />
                     <text
