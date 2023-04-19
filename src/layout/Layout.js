@@ -3,6 +3,7 @@ import Header from "../components/Header/Header";
 import styles from "./Layout.module.scss";
 import Leftbar from "../components/Leftbar/Leftbar";
 import Dashboard from "../components/Dashboard/Dashboard";
+import Home from "../pages/Home";
 import getMockData from "../api/datacall";
 import {useEffect,} from "react";
 
@@ -15,6 +16,7 @@ function Layout() {
                 <div className={styles.container}>
                     <Leftbar/>
                     <Routes>
+                        <Route exact path="/" element={<Home />} />
                         <Route path="user/:id" element={<Dashboard/>}/>
                     </Routes>
                 </div>
