@@ -22,10 +22,11 @@ const RadialBarCharts = ({userScore}) => {
                     data={radialChartData}
                     innerRadius="80%"
                     outerRadius="80%"
-                    barSize={10}
+                    barSize={20}
                     startAngle={90}
                     endAngle={470}
                 >
+
                     <PolarAngleAxis
                         type="number"
                         domain={[0, 100]}
@@ -39,6 +40,7 @@ const RadialBarCharts = ({userScore}) => {
                         angleAxisId={0}
                         data={radialChartData}
                         fill="#FF0000"
+                        cornerRadius={15}
                     />
                     <text
                         x="50%"
@@ -47,7 +49,8 @@ const RadialBarCharts = ({userScore}) => {
                         dominantBaseline="middle"
                         fontSize={18}
                     >
-                        {`${percentage}%`} de votre objectif
+                        <tspan dy="-1em" className={styles.percentage}>{`${percentage}%`}</tspan>
+                        <tspan dy="2em" x="50%" textAnchor="middle" className={styles.objectif}>{`de votre objectif`}</tspan>
                     </text>
                 </RadialBarChart>
             </ResponsiveContainer>

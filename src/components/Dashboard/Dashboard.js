@@ -17,15 +17,24 @@ import getMockData from "../../api/datacall";
 const Dashboard = () => {
     const [user, setUser] = useState(null);
     const [userActivity, setUserActivity] = useState([]);
+    const [userPerformance, setUserPerformance] = useState([]);
+    const [userKinds, setUserKinds] = useState({});
     const {id} =  useParams();
 
     useEffect(() => {
-        getMockData(id).then(({ userData, userActivity }) => {
+        getMockData(id).then(({ userData, userActivity, userPerformance }) => {
             setUser(userData);
             setUserActivity(userActivity.sessions);
+            setUserPerformance(userPerformance.data);
+            setUserKinds(userPerformance.kind);
         });
     }, [id]);
 //permet de prendre en compte les deux élèments score et todayScore
+
+    const performanceData = userPerformance.map((item) => ({
+        subject: userKinds[item.kind],
+        value: item.value,
+    }));
     const getUserScore = (user) => {
         if (user.todayScore !== undefined) {
             return user.todayScore;
@@ -53,7 +62,11 @@ const Dashboard = () => {
                     </div>
                     <div className={styles.dashboard__secondcontainer}>
                         <LineCharts />
-                        <RadarChart />
+                        {performanceData.length > 0 ? (
+                            <RadarChart performanceData={performanceData} />
+                        ) : (
+                            <div>Loading...</div>
+                        )}
                         {userScore !== undefined ? <RadialBarCharts userScore={userScore} key={id} /> : <div>Loading...</div>}
                     </div>
                 </div>
