@@ -13,10 +13,10 @@ const RadarCharts = ({performanceData}) => (
 
 
 <div className={styles.RadarContainer}>
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer width="90%" height="100%">
         <RadarChart cx="50%" cy="50%" outerRadius="70%" data={performanceData}>
             <PolarGrid />
-            <PolarAngleAxis dataKey="subject" tickFormatter={capitalize} tick={{ fill: 'white'}} />
+            <PolarAngleAxis dataKey="subject" tickFormatter={capitalize} tick={{ fill: 'white', fontSize: 11}} />
             <Radar dataKey="value" stroke="#FF0101" strokeOpacity={0.6} fill="#FF0101" fillOpacity={0.6} />
         </RadarChart>
     </ResponsiveContainer>

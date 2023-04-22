@@ -19,6 +19,8 @@ const LineCharts = () => {
     };
 
     const data = getSessionDataByUserId(18);
+    console.log("Session data:", data);
+
 
 
 
@@ -38,14 +40,8 @@ const LineCharts = () => {
         <div className={styles.chartContainer}>
             <h3 className={styles.chartTitle}>Durée moyenne de sessions</h3>
             <div className={styles.chartWrapper}>
-                <ResponsiveContainer width="100%" height="75%">
+                <ResponsiveContainer width="100%" height={200}>
                     <LineChart data={data}>
-                        <defs>
-                            <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stopColor="#FFFFFF" stopOpacity={0.5} /> {/* Modifier la valeur stopOpacity */}
-                                <stop offset="100%" stopColor="#FFFFFF" stopOpacity={0} /> {/* Modifier la valeur stopColor et stopOpacity */}
-                            </linearGradient>
-                        </defs>
                         <XAxis axisLine={false} dataKey="day" />
                         <YAxis axisLine={false} tick={false} dataKey="sessionLength" />
                         <Tooltip content={CustomTooltip} />
@@ -61,7 +57,7 @@ const LineCharts = () => {
                             type="monotone"
                             dataKey="sessionLength"
                             stroke="none"
-                            fill="url(#areaGradient)"
+                            fill="white"
                             fillOpacity={1}
                             isAnimationActive={false}
                         />

@@ -6,15 +6,15 @@ const Navbar = () => {
     return (
         <header>
             <div className={styles.logo}>
-                <img src={logo} alt="Sport See" />
+                <a href="/"> <img src={logo} alt="Sport See" /></a>
             </div>
             <nav className={styles.navbar}>
 
                 <ul className={styles.menu}>
-                    <li><a href="src/components/Header#">Accueil</a></li>
-                    <li><a href="src/components/Header#">Profil</a></li>
-                    <li><a href="src/components/Header#">Réglage</a></li>
-                    <li><a href="src/components/Header#">Communauté</a></li>
+                    <li><a href="/">Accueil</a></li>
+                    <li><a href="#">Profil</a></li>
+                    <li><a href="#">Réglage</a></li>
+                    <li><a href="#">Communauté</a></li>
                 </ul>
             </nav>
         </header>

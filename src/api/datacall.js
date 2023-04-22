@@ -9,6 +9,20 @@ async function getMockData(id) {
     const userPerformance = mockdata.USER_PERFORMANCE.find(user => user.userId === userId);
     return {userData, userActivity, userPerformance};
 }
+async function getApiData(id) {
+    const baseUrl = "http://localhost:3000/user/";
+    try {
+        let userId = parseInt(id);
+        const userData = await axios.get(baseUrl + userId).then(response => {
+            return response.data.data;
+        });
+        const userActivity = await axios.get(baseUrl + userId + "/activity").then(response => {
+            return response.data.data;
+        });
+        return {userData, userActivity};
+    } catch (error) {
+        console.log("Le serveur ne répond pas " + error);
+    }
+}
 
-
-export default getMockData;
+export {getApiData, getMockData};

@@ -52,7 +52,7 @@ const SimpleBarChart = ({userActivity}) => {
 
         return (
             <text x={x} y={y} dy={16} textAnchor="middle" fill="#666" >
-                {new Date(payload.value).getDate()}
+                {payload.value}
             </text>
         );
     }

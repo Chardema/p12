@@ -10,7 +10,7 @@ import LineCharts from "./../../components/LineChart/LineChart.js";
 import RadialBarCharts from "../PieChart/RadialBarCharts.js";
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
-import getMockData from "../../api/datacall";
+import {getMockData, getApiData} from "../../api/datacall";
 
 
 
@@ -22,6 +22,9 @@ const Dashboard = () => {
     const {id} =  useParams();
 
     useEffect(() => {
+        getApiData(id).then(({ userData, userActivity }) => {
+            console.log(userActivity);
+        });
         getMockData(id).then(({ userData, userActivity, userPerformance }) => {
             setUser(userData);
             setUserActivity(userActivity.sessions);
