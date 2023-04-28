@@ -24,7 +24,12 @@ async function getApiData(id) {
       .then((response) => {
         return response.data.data;
       });
-    return { userData, userActivity };
+    const userSessionData = await axios
+      .get(baseUrl + userId + "/average-sessions")
+      .then((response) => {
+        return response.data.data;
+      });
+    return { userData, userActivity, userSessionData };
   } catch (error) {
     console.log("Le serveur ne répond pas " + error);
   }

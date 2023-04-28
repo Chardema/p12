@@ -1,3 +1,7 @@
+/**
+ * @file Dashboard component
+ * @module components/Dashboard
+ */
 import React, { useEffect, useState } from "react";
 import styles from "./Dashboard.module.scss";
 import NutritionData from "../NutritionData/NutritionData";
@@ -11,18 +15,29 @@ import LineCharts from "./../../components/LineChart/LineChart.js";
 import RadialBarCharts from "../PieChart/RadialBarCharts.js";
 import { useParams } from "react-router-dom";
 import { getMockData, getApiData } from "../../api/datacall";
-
+/**
+ * Dashboard component, displaying user information and various chart components.
+ * @function Dashboard
+ * @returns {React.Element} - The rendered Dashboard component
+ */
 const Dashboard = () => {
   const [user, setUser] = useState(null);
   const [userActivity, setUserActivity] = useState([]);
   const [userPerformance, setUserPerformance] = useState([]);
+  const [userSessionData, setUserSessionData] = useState([]);
   const [userKinds, setUserKinds] = useState({});
   const { id } = useParams();
 
+  /**
+   * Fetch user data and activity data and set state.
+   */
+
   useEffect(() => {
-    getApiData(id).then(({ userData, userActivity }) => {
-      console.log(userActivity);
+    // données API
+    getApiData(id).then(({ userData, userActivity, userSessionData }) => {
+      setUserSessionData(userSessionData);
     });
+    // données Mockées
     getMockData(id).then(({ userData, userActivity, userPerformance }) => {
       setUser(userData);
       setUserActivity(userActivity.sessions);
@@ -65,7 +80,7 @@ const Dashboard = () => {
             <Simplebarcharts userActivity={userActivity} />
           </div>
           <div className={styles.dashboard__secondcontainer}>
-            <LineCharts />
+            <LineCharts data={userSessionData.sessions} />
             {performanceData.length > 0 ? (
               <RadarChart performanceData={performanceData} />
             ) : (

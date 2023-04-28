@@ -69,7 +69,8 @@ const RadialBarCharts = ({ userScore }) => {
 };
 
 RadialBarCharts.propTypes = {
-  userScore: PropTypes.number.isRequired,
+  userScore: PropTypes.number,
+  key: PropTypes.number.isRequired,
 };
 
 export default RadialBarCharts;

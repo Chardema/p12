@@ -49,8 +49,8 @@ function NutritionData(props) {
 
 NutritionData.propTypes = {
   icon: PropTypes.string.isRequired,
+  value: PropTypes.number,
   unit: PropTypes.string.isRequired,
-  value: PropTypes.number.isRequired,
   info: PropTypes.string.isRequired,
 };
 
