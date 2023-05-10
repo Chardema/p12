@@ -10,12 +10,15 @@ import {
 
 import PropTypes from "prop-types";
 
-const capitalize = (str) => {
-  return str
-    .split(" ")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
+const translations = {
+  cardio: "Cardio",
+  energy: "Energie",
+  endurance: "Endurance",
+  strength: "Force",
+  speed: "Vitesse",
+  intensity: "Intensité",
 };
+
 const RadarCharts = ({ performanceData }) => (
   <div className={styles.RadarContainer}>
     <ResponsiveContainer width="90%" height="100%">
@@ -23,7 +26,7 @@ const RadarCharts = ({ performanceData }) => (
         <PolarGrid />
         <PolarAngleAxis
           dataKey="subject"
-          tickFormatter={capitalize}
+          tickFormatter={(word) => translations[word.toLowerCase()] || word}
           tick={{ fill: "white", fontSize: 11 }}
         />
         <Radar

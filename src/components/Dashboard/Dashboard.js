@@ -33,18 +33,25 @@ const Dashboard = () => {
    */
 
   useEffect(() => {
-    // données API
-    getApiData(id).then(({ userData, userActivity, userSessionData }) => {
-      setUserSessionData(userSessionData);
-    });
-    // données Mockées
-    getMockData(id).then(({ userData, userActivity, userPerformance }) => {
-      setUser(userData);
-      setUserActivity(userActivity.sessions);
-      setUserPerformance(userPerformance.data);
-      setUserKinds(userPerformance.kind);
-    });
+    getApiData(id)
+      .then(({ userData, userActivity, userSessionData, userKind }) => {
+        setUser(userData);
+        setUserActivity(userActivity.sessions);
+        setUserSessionData(userSessionData);
+        setUserPerformance(userKind.data);
+        setUserKinds(userKind.kind);
+      })
+      .catch((error) => {
+        console.error(error);
+        getMockData(id).then(({ userData, userActivity, userPerformance }) => {
+          setUser(userData);
+          setUserActivity(userActivity.sessions);
+          setUserPerformance(userPerformance.data);
+          setUserKinds(userPerformance.kind);
+        });
+      });
   }, [id]);
+
   // permet de prendre en compte les deux élèments score et todayScore
 
   const performanceData = userPerformance.map((item) => ({
@@ -103,19 +110,19 @@ const Dashboard = () => {
             info="Calories"
           />
           <NutritionData
-            icon={carbohydrate}
+            icon={protein}
             value={user && user.keyData && user.keyData.proteinCount}
             unit="g"
             info="Protéines"
           />
           <NutritionData
-            icon={lipid}
+            icon={carbohydrate}
             value={user && user.keyData && user.keyData.carbohydrateCount}
             unit="g"
             info="Glucides"
           />
           <NutritionData
-            icon={protein}
+            icon={lipid}
             value={user && user.keyData && user.keyData.lipidCount}
             unit="g"
             info="Lipides"

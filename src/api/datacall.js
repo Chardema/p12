@@ -29,9 +29,16 @@ async function getApiData(id) {
       .then((response) => {
         return response.data.data;
       });
-    return { userData, userActivity, userSessionData };
+    const userKind = await axios
+      .get(baseUrl + userId + "/performance")
+      .then((response) => {
+        return response.data.data;
+      });
+    console.log(userKind);
+    return { userData, userActivity, userSessionData, userKind };
   } catch (error) {
     console.log("Le serveur ne répond pas " + error);
+    return getMockData(id);
   }
 }
 
