@@ -80,7 +80,9 @@ const Dashboard = () => {
             <Simplebarcharts userActivity={userActivity} />
           </div>
           <div className={styles.dashboard__secondcontainer}>
-            <LineCharts data={userSessionData.sessions} />
+            <LineCharts
+              data={userSessionData.sessions ? userSessionData.sessions : []}
+            />
             {performanceData.length > 0 ? (
               <RadarChart performanceData={performanceData} />
             ) : (
