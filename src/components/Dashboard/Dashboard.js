@@ -67,7 +67,7 @@ const Dashboard = () => {
       return undefined;
     }
   };
-  // rassemble en une seule const les deux élèments pour affichage dans la RadialbarChart
+  // rassemble en une seule const les deux élèments pour affichag dans la RadialbarChart
   const userScore = user && getUserScore(user);
 
   return (
