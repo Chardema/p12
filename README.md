@@ -68,3 +68,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### `npm start` to backend to run the backend
+
+This project is dependent on a backend server for data. In order to properly display data on the frontend, please ensure that the backend server is up and running before starting the frontend server.
+
+To start the backend server, use the `npm start` command. This will run the app in development mode and you can open http://localhost:3000 to view it in your browser.
+
+In the event the backend server is unavailable, this project is designed to fall back on mocked data. This ensures that data will still be displayed in the frontend, providing a seamless experience for the user even during backend server downtime.
