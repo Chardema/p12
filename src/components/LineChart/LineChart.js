@@ -12,6 +12,18 @@ import {
 import PropTypes from "prop-types";
 import styles from "./LineChart.module.scss";
 
+/**
+ * CustomTooltip component that render a tooltip with the average session duration.
+ *
+ * @component
+ *
+ * @param {Object} props - props of CustomTooltip component
+ * @param {boolean} props.active - active status
+ * @param {Object[]} props.payload - payload array
+ * @param {number} props.payload[].value - value of payload
+ *
+ * @returns {React.Node} - CustomTooltip component
+ */
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length > 0) {
     return (
@@ -34,6 +46,19 @@ CustomTooltip.propTypes = {
 
 const dayOfWeek = ["", "L", "M", "M", "J", "V", "S", "D"];
 
+/**
+ * LineCharts component that render a graph with the average session duration.
+ *
+ * @component
+ *
+ * @param {Object} props - props of LineCharts component
+ * @param {Object[]} props.data - data array
+ * @param {string} props.data[].name - name of data object
+ * @param {number} props.data[].avgSessionDuration - average session duration of data object
+ * @param {(string|number)} props.data[].day - day of data object
+ *
+ * @returns {React.Node} - LineCharts component
+ */
 const LineCharts = ({ data }) => {
   const [activeIndex, setActiveIndex] = useState(null);
 

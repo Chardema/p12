@@ -7,7 +7,16 @@ import {
   PolarAngleAxis,
 } from "recharts";
 import PropTypes from "prop-types";
-
+/**
+ * RadialBarCharts component that render a graph with the user's score.
+ *
+ * @component
+ *
+ * @param {Object} props - props of RadialBarCharts component
+ * @param {number} props.userScore - user's score
+ *
+ * @returns {React.Node} - RadialBarCharts component
+ */
 const RadialBarCharts = ({ userScore }) => {
   // Multiplier par 100 pour convertir la valeur décimale en pourcentage
   const userScorePercentage = userScore * 100;

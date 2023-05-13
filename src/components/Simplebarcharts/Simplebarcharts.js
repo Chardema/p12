@@ -61,7 +61,17 @@ const CustomTooltip = ({ active, payload }) => {
 
   return null;
 };
-
+/**
+ * SimpleBarChart component that render a graph with the average session duration.
+ *
+ * @component
+ *
+ * @param {Object} props - props of SimpleBarChart component
+ * @param {Object[]} props.userActivity - user activity data array
+ * @param {number} props.userActivity[].calories - calories data of user activity
+ *
+ * @returns {React.Node} - SimpleBarChart component
+ */
 const SimpleBarChart = ({ userActivity }) => {
   const [legendData, setLegendData] = useState([]);
 

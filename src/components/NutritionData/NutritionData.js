@@ -3,6 +3,19 @@ import PropTypes from "prop-types";
 import ColorThief from "colorthief";
 import styles from "./NutritionData.module.scss";
 
+/**
+ * NutritionData component that render a nutrition data with background related with image put on it.
+ *
+ * @component
+ *
+ * @param {Object} props - props of NutritionData component
+ * @param {string} props.icon - icon image URL
+ * @param {number} props.value - value of nutrition data
+ * @param {string} props.unit - unit of the nutrition data
+ * @param {string} props.info - additional info
+ *
+ * @returns {React.Node} - NutritionData component
+ */
 function NutritionData(props) {
   const [bgColor, setBgColor] = useState("#ffffff");
   const imgRef = useRef(null);

@@ -15,6 +15,7 @@ import LineCharts from "./../../components/LineChart/LineChart.js";
 import RadialBarCharts from "../PieChart/RadialBarCharts.js";
 import { useParams } from "react-router-dom";
 import { switchUserData } from "../../api/datacall";
+import Models from "../../api/Model";
 /**
  * Dashboard component, displaying user information and various chart components.
  * @function Dashboard
@@ -27,6 +28,7 @@ const Dashboard = () => {
   const [userSessionData, setUserSessionData] = useState([]);
   const [userKinds, setUserKinds] = useState({});
   const { id } = useParams();
+  const models = new Models();
 
   /**
    * Fetch user data and activity data and set state.
@@ -37,33 +39,19 @@ const Dashboard = () => {
       .then(({ userData, userActivity, userSessionData, userKind }) => {
         setUser(userData);
         setUserActivity(userActivity.sessions);
-        setUserSessionData(userSessionData);
+        setUserPerformance(
+          models.getPerformanceData(userKind.data, userKind.kind)
+        );
         console.log(userSessionData);
-        setUserPerformance(userKind.data);
+        setUserSessionData(userSessionData);
         setUserKinds(userKind.kind);
       })
       .catch((error) => {
         console.error(error);
       });
   }, [id]);
-
-  // permet de prendre en compte les deux élèments score et todayScore
-
-  const performanceData = userPerformance.map((item) => ({
-    subject: userKinds[item.kind],
-    value: item.value,
-  }));
-  const getUserScore = (user) => {
-    if (user.todayScore !== undefined) {
-      return user.todayScore;
-    } else if (user.score !== undefined) {
-      return user.score;
-    } else {
-      return undefined;
-    }
-  };
-  // rassemble en une seule const les deux élèments pour affichag dans la RadialbarChart
-  const userScore = user && getUserScore(user);
+  const performanceData = models.getPerformanceData(userPerformance, userKinds);
+  const userScore = models.getUserScoreWrapper(user);
 
   return (
     <div className={styles.dashboard}>

@@ -19,6 +19,18 @@ const translations = {
   intensity: "Intensité",
 };
 
+/**
+ * RadarCharts component that render a graph with the user's performance.
+ *
+ * @component
+ *
+ * @param {Object} props - props of RadarCharts component
+ * @param {Object[]} props.performanceData - performance data array
+ * @param {string} props.performanceData[].subject - subject of performance data
+ * @param {number} props.performanceData[].value - value of performance data
+ *
+ * @returns {React.Node} - RadarCharts component
+ */
 const RadarCharts = ({ performanceData }) => (
   <div className={styles.RadarContainer}>
     <ResponsiveContainer width="90%" height="100%">
