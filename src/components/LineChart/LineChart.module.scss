@@ -30,5 +30,18 @@
   font-weight: 500;
 }
 
+.tooltip {
+  background-color: white;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0px;
+  p {
+    color: black;
+    font-size: 12px;
+    padding: 5px;
+  }
+}
+
 
 
