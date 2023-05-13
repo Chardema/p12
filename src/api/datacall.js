@@ -38,8 +38,13 @@ async function getApiData(id) {
     return { userData, userActivity, userSessionData, userKind };
   } catch (error) {
     console.log("Le serveur ne répond pas " + error);
-    return getMockData(id);
   }
 }
-
-export { getApiData, getMockData };
+export async function switchUserData(userId, apiData) {
+  if (apiData) {
+    return getApiData(userId);
+  } else {
+    return getMockData(userId);
+  }
+}
+export { getMockData, getApiData };

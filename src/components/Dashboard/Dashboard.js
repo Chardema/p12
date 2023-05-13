@@ -14,7 +14,7 @@ import RadarChart from "./../../components/RadarChart/RadarChart.js";
 import LineCharts from "./../../components/LineChart/LineChart.js";
 import RadialBarCharts from "../PieChart/RadialBarCharts.js";
 import { useParams } from "react-router-dom";
-import { getMockData, getApiData } from "../../api/datacall";
+import { switchUserData } from "../../api/datacall";
 /**
  * Dashboard component, displaying user information and various chart components.
  * @function Dashboard
@@ -33,7 +33,7 @@ const Dashboard = () => {
    */
 
   useEffect(() => {
-    getApiData(id)
+    switchUserData(id, false)
       .then(({ userData, userActivity, userSessionData, userKind }) => {
         setUser(userData);
         setUserActivity(userActivity.sessions);
@@ -43,12 +43,6 @@ const Dashboard = () => {
       })
       .catch((error) => {
         console.error(error);
-        getMockData(id).then(({ userData, userActivity, userPerformance }) => {
-          setUser(userData);
-          setUserActivity(userActivity.sessions);
-          setUserPerformance(userPerformance.data);
-          setUserKinds(userPerformance.kind);
-        });
       });
   }, [id]);
 

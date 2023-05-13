@@ -28,7 +28,7 @@ const Leftbar = () => {
           <img src={dumbbellIcon} alt="Swimming icon" className={styles.icon} />
         </div>
       </div>
-      <div className={styles.copy}>Copiryght, SportSee 2020</div>
+      <div className={styles.text}> Copiryght, SportSee 2020 </div>
     </div>
   );
 };
