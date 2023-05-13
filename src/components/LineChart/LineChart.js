@@ -53,10 +53,10 @@ const LineCharts = ({ data }) => {
 
   return (
     <div className={styles.LineContainer}>
+      <h2 className={styles.ChartTitle}>Durée moyenne de sessions</h2>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={data}
-          margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
         >
@@ -71,6 +71,8 @@ const LineCharts = ({ data }) => {
             tickFormatter={(tickItem) => dayOfWeek[tickItem]}
             padding={{ left: 30, right: 30 }}
             stroke="#FFFFFF"
+            axisLine={false}
+            tickLine={false}
           />
           <YAxis hide />
           <Tooltip content={CustomTooltip} />
@@ -94,7 +96,9 @@ const LineCharts = ({ data }) => {
             dataKey="sessionLength"
             stroke="#FFFFFF"
             strokeWidth={3}
-            activeDot={<Dot r={5} />}
+            dot={({ index }) =>
+              index === activeIndex ? <Dot r={5} key={index} /> : null
+            }
           />
         </LineChart>
       </ResponsiveContainer>
