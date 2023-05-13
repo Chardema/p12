@@ -33,11 +33,12 @@ const Dashboard = () => {
    */
 
   useEffect(() => {
-    switchUserData(id, false)
+    switchUserData(id, true)
       .then(({ userData, userActivity, userSessionData, userKind }) => {
         setUser(userData);
         setUserActivity(userActivity.sessions);
         setUserSessionData(userSessionData);
+        console.log(userSessionData);
         setUserPerformance(userKind.data);
         setUserKinds(userKind.kind);
       })

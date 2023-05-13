@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import {
   LineChart,
   Line,
-  Area,
   XAxis,
   YAxis,
   Tooltip,
   ResponsiveContainer,
+  ReferenceArea,
   Dot,
 } from "recharts";
 import PropTypes from "prop-types";
@@ -51,10 +51,6 @@ const LineCharts = ({ data }) => {
     setActiveIndex(null);
   };
 
-  // Split data into two arrays based on activeIndex
-  const data1 = activeIndex !== null ? data.slice(0, activeIndex + 1) : data;
-  const data2 = activeIndex !== null ? data.slice(activeIndex) : [];
-
   return (
     <div className={styles.LineContainer}>
       <ResponsiveContainer width="100%" height="100%">
@@ -64,6 +60,12 @@ const LineCharts = ({ data }) => {
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
         >
+          <defs>
+            <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+            </linearGradient>
+          </defs>
           <XAxis
             dataKey="day"
             tickFormatter={(tickItem) => dayOfWeek[tickItem]}
@@ -72,20 +74,21 @@ const LineCharts = ({ data }) => {
           />
           <YAxis hide />
           <Tooltip content={CustomTooltip} />
-          <Area
-            type="monotone"
-            dataKey="sessionLength"
-            data={data1}
-            fill="#FFFFFF" // color before active index
-            strokeWidth={0}
-          />
-          <Area
-            type="monotone"
-            dataKey="sessionLength"
-            data={data2}
-            fill="#8884d8" // color after active index
-            strokeWidth={0}
-          />
+          {activeIndex !== null && (
+            <>
+              <ReferenceArea
+                x1={data[activeIndex]?.day || data[data.length - 1].day}
+                x2={data[data.length - 1].day}
+                fill="black"
+                fillOpacity={0.2}
+              />
+              <ReferenceArea
+                x1={data[0].day}
+                x2={data[activeIndex].day}
+                fillOpacity={0}
+              />
+            </>
+          )}
           <Line
             type="monotone"
             dataKey="sessionLength"
@@ -104,6 +107,7 @@ LineCharts.propTypes = {
     PropTypes.shape({
       name: PropTypes.string,
       avgSessionDuration: PropTypes.number,
+      day: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     })
   ),
 };

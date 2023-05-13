@@ -7,10 +7,13 @@ async function getMockData(id) {
   const userActivity = mockdata.USER_ACTIVITY.find(
     (user) => user.userId === userId
   );
-  const userPerformance = mockdata.USER_PERFORMANCE.find(
+  const userKind = mockdata.USER_PERFORMANCE.find(
     (user) => user.userId === userId
   );
-  return { userData, userActivity, userPerformance };
+  const userSessionData = mockdata.USER_AVERAGE_SESSIONS.find(
+    (user) => user.userId === userId
+  );
+  return { userData, userActivity, userKind, userSessionData };
 }
 async function getApiData(id) {
   const baseUrl = "http://localhost:3000/user/";
@@ -34,7 +37,6 @@ async function getApiData(id) {
       .then((response) => {
         return response.data.data;
       });
-    console.log(userKind);
     return { userData, userActivity, userSessionData, userKind };
   } catch (error) {
     console.log("Le serveur ne répond pas " + error);
