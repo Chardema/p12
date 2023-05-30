@@ -18,6 +18,17 @@ export default class Models {
     }));
   }
 
+  static translations() {
+    return {
+      cardio: "Cardio",
+      energy: "Energie",
+      endurance: "Endurance",
+      strength: "Force",
+      speed: "Vitesse",
+      intensity: "Intensité",
+    };
+  }
+
   getUserScore(user) {
     if (user.todayScore !== undefined) {
       return user.todayScore;

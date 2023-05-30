@@ -39,10 +39,12 @@ const Dashboard = () => {
       .then(({ userData, userActivity, userSessionData, userKind }) => {
         setUser(userData);
         setUserActivity(userActivity.sessions);
-        setUserPerformance(
-          models.getPerformanceData(userKind.data, userKind.kind)
+        const performanceData = models.getPerformanceData(
+          userKind.data,
+          userKind.kind
         );
-        console.log(userSessionData);
+        console.log(performanceData);
+        setUserPerformance(performanceData);
         setUserSessionData(userSessionData);
         setUserKinds(userKind.kind);
       })
@@ -50,6 +52,7 @@ const Dashboard = () => {
         console.error(error);
       });
   }, [id]);
+
   const performanceData = models.getPerformanceData(userPerformance, userKinds);
   const userScore = models.getUserScoreWrapper(user);
 
@@ -74,7 +77,7 @@ const Dashboard = () => {
               data={userSessionData.sessions ? userSessionData.sessions : []}
             />
             {performanceData.length > 0 ? (
-              <RadarChart performanceData={performanceData} />
+              <RadarChart performanceData={userPerformance} />
             ) : (
               <div>Loading...</div>
             )}
