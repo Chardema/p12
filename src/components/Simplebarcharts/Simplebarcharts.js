@@ -12,6 +12,9 @@ import {
 import styles from "./Simplebarcharts.module.scss";
 import Models from "../../api/Model";
 
+// CustomLegend, CharTitle, CustomizedAxisTick, CustomToolTip ne devraient pas être mis dans Model.js
+// Ce sont des composants fonctionnels de React qui sont utilisés pour gérer la logique d'affichage de l'interface utilisateur dans votre application.
+// En règle générale, ce type de composants doit être séparé de la logique métier (model.js) de votre application.
 const CustomLegend = ({ data }) => {
   return (
     <div className={styles.legend}>
